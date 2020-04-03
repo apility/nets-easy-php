@@ -5,7 +5,7 @@ This is intended to be a public project that anyone can participate in. If you w
 Fork, then clone the repo:
 
 ```bash
-git clone git@github.com:your-username/package.git
+git clone git@github.com:your-username/dibs-easy.git
 ```
 
 Install it:

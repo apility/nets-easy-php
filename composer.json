@@ -1,15 +1,32 @@
 {
-  "description": "",
+  "name": "apility/dibs-easy",
+  "description": "DIBS Easy library",
   "type": "library",
   "license": "MIT",
-  "keywords": [],
+  "keywords": [
+    "DIBS",
+    "Payment"
+  ],
   "config": {
     "platform": {
       "php": "7.3"
     },
     "sort-packages": true
   },
+  "autoload": {
+    "psr-4": {
+      "Apility\\DIBS\\": "src/"
+    }
+  },
   "require": {
-    "php": "^7.3"
+    "php": "^7.3",
+    "illuminate/support": "^7.0",
+    "netflex/api": "^2.0",
+    "netflex/support": "^2.0"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require-dev": {
+    "vlucas/phpdotenv": "^4.1"
   }
 }
