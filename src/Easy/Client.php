@@ -2,16 +2,17 @@
 
 namespace NETS\Easy;
 
+use Psr\Http\Message\ResponseInterface;
+
 use NETS\Easy\Exceptions\BadRequestException;
 use NETS\Easy\Exceptions\NotAuthorizedException;
 use NETS\Easy\Exceptions\NotFoundException;
 use NETS\Easy\Exceptions\PaymentException;
-use Netflex\API\Client as API;
 
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\ClientException;
 
-class Client extends API
+class Client
 {
   /** @var GuzzleClient */
   protected $client;
@@ -39,19 +40,18 @@ class Client extends API
       ]
     ];
 
-    $this->client = new Client($options);
+    $this->client = new GuzzleClient($options);
   }
 
   /**
    * @param string $url
-   * @param boolean $assoc = false
    * @return mixed
    * @throws Exception
    */
-  public function get($url, $assoc = false)
+  public function get($url)
   {
     try {
-      return parent::get($url, $assoc);
+      return $this->parseResponse($this->client->get($url));
     } catch (ClientException $e) {
       throw static::makeException($e);
     }
@@ -60,14 +60,13 @@ class Client extends API
   /**
    * @param string $url
    * @param array $payload = []
-   * @param boolean $assoc = false
    * @return mixed
    * @throws Exception
    */
-  public function put($url, $payload = [], $assoc = false)
+  public function put($url, $payload = [])
   {
     try {
-      return parent::put($url, $payload, $assoc);
+      return $this->parseResponse($this->client->put($url, ['json' => $payload]));
     } catch (ClientException $e) {
       throw static::makeException($e);
     }
@@ -76,14 +75,13 @@ class Client extends API
   /**
    * @param string $url
    * @param array $payload = []
-   * @param boolean $assoc = false
    * @return mixed
    * @throws Exception
    */
-  public function post($url, $payload = [], $assoc = false)
+  public function post($url, $payload = [])
   {
     try {
-      return parent::post($url, $payload, $assoc);
+      return $this->parseResponse($this->client->post($url, ['json' => $payload]));
     } catch (ClientException $e) {
       throw static::makeException($e);
     }
@@ -94,10 +92,10 @@ class Client extends API
    * @return mixed
    * @throws Exception
    */
-  public function delete($url, $assoc = false)
+  public function delete($url)
   {
     try {
-      return parent::delete($url, $assoc);
+      return $this->parseResponse($this->client->delete($url));
     } catch (ClientException $e) {
       throw static::makeException($e);
     }
@@ -128,5 +126,30 @@ class Client extends API
 
         return $e;
     }
+  }
+
+  /**
+   * @param ResponseInterface $response
+   * @return mixed
+   */
+  protected function parseResponse(ResponseInterface $response)
+  {
+    $body = $response->getBody();
+
+    $contentType = strtolower($response->getHeaderLine('Content-Type'));
+
+    if (strpos($contentType, 'json') !== false) {
+      $jsonBody = json_decode($body, true);
+
+      if (json_last_error() === JSON_ERROR_NONE) {
+        return $jsonBody;
+      }
+    }
+
+    if (strpos($contentType, 'text') !== false) {
+      return $body->getContents();
+    }
+
+    return null;
   }
 }
