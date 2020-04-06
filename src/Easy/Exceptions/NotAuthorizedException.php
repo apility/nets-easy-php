@@ -1,7 +1,7 @@
 <?php
 
-namespace Apility\DIBS\Easy\Exceptions;
+namespace NETS\Easy\Exceptions;
 
-class NotAuthorizedException extends DIBSEasyException
+class NotAuthorizedException extends EasyException
 {
 }

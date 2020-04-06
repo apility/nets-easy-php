@@ -1,10 +1,10 @@
 <?php
 
-namespace Apility\DIBS\Easy;
+namespace NETS\Easy;
 
 /**
  */
-class InvoiceDetails extends DIBSEasyType
+class InvoiceDetails extends EasyType
 {
   /** @var array */
   protected $timestamps = [];

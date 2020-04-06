@@ -1,9 +1,9 @@
-# DIBS Easy PHP bindings
+# NETS Easy PHP bindings
 
-[![CircleCI](https://circleci.com/gh/apility/dibs-easy-php.svg?style=shield&circle-token=d878cbbe3e98c96ba07f7baaec7cf7fd11bd2399)](https://circleci.com/gh/apility/dibs-easy-php)
-[![License](https://img.shields.io/badge/license-MIT-brightgreen)](https://github.com/apility/dibs-easy-php/blob/master/LICENSE)
+[![CircleCI](https://circleci.com/gh/apility/nets-easy-php.svg?style=shield&circle-token=d878cbbe3e98c96ba07f7baaec7cf7fd11bd2399)](https://circleci.com/gh/apility/nets-easy-php)
+[![License](https://img.shields.io/badge/license-MIT-brightgreen)](https://github.com/apility/nets-easy-php/blob/master/LICENSE)
 
-The DIBS Easy PHP library provides convenient access to the DIBS Easy API from
+The NETS Easy PHP library provides convenient access to the NETS Easy API from
 applications written in the PHP language. It includes a pre-defined set of
 classes for API resources that initialize themselves dynamically from API
 responses.
@@ -17,7 +17,7 @@ PHP 7.3.0 and later.
 You can install the bindings via [Composer](http://getcomposer.org/). Run the following command:
 
 ```bash
-composer require apility/dibs-easy
+composer require apility/nets-easy
 ```
 
 To use the bindings, use Composer's [autoload](https://getcomposer.org/doc/01-basic-usage.md#autoloading):
@@ -26,18 +26,19 @@ To use the bindings, use Composer's [autoload](https://getcomposer.org/doc/01-ba
 require_once('vendor/autoload.php');
 ```
 
+##
+
 ## Getting Started
 
 Simple usage looks like:
-
 
 ### Backend integration
 
 ```php
 <?php
 
-use Apility\DIBS\Easy;
-use Apility\DIBS\Easy\Payment;
+use NETS\Easy;
+use NETS\Easy\Payment;
 
 Easy::setCredentials([
   'secret_key' => '00000000000000000000000000000000',
@@ -78,8 +79,8 @@ The simplest way to integrate the checkout form in the frontend, is to use the `
 ```php
 <?php
 
-use Apility\DIBS\Easy;
-use Apility\DIBS\Easy\Payment;
+use NETS\Easy;
+use NETS\Easy\Payment;
 
 Easy::setCredentials(...);
 
@@ -97,7 +98,7 @@ $form = $payment->form([
 ]);
 
 ?>
-<div id="dibs-complete-checkout"></div>
+<div id="easy-complete-checkout"></div>
 <?php echo $form; ?>
 ```
 
@@ -109,14 +110,14 @@ Alternatively, if you require full control of checkout flow, implement it manual
     <title>Example checkout</title>
   </head>
   <body>
-    <div id="dibs-complete-checkout"></div>
+    <div id="easy-complete-checkout"></div>
     <script>
       document.addEventListener('DOMContentLoaded', () => {
         const checkout = new Dibs.Checkout({
           checkoutKey: "00000000000000000000000000000000", // Checkout Key
           paymentId: "00000000000000000000000000000000", // Payment ID created in the backend integration
           partnerMerchantNumber: "000000000", // Merchant ID
-          containerId: "dibs-complete-checkout", // Container element where the checkout form should be created
+          containerId: "easy-complete-checkout", // Container element where the checkout form should be created
         })
 
         checkout.on('payment-completed', ({ paymentId }) => {

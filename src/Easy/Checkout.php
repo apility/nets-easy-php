@@ -1,11 +1,11 @@
 <?php
 
-namespace Apility\DIBS\Easy;
+namespace NETS\Easy;
 
 /**
  * @property-read int $url
  */
-class Checkout extends DIBSEasyType
+class Checkout extends EasyType
 {
   /** @var array */
   protected $timestamps = [];

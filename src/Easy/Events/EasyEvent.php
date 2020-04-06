@@ -1,12 +1,12 @@
 <?php
 
-namespace Apility\DIBS\Easy\Events;
+namespace NETS\Easy\Events;
 
-use Apility\DIBS\Easy\Payment;
+use NETS\Easy\Payment;
 use Netflex\Commerce\Order;
 use Illuminate\Queue\SerializesModels;
 
-class DIBSPaymentEvent
+class EasyEvent;
 {
   use SerializesModels;
 

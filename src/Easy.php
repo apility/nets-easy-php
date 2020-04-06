@@ -1,8 +1,8 @@
 <?php
 
-namespace Apility\DIBS;
+namespace NETS;
 
-use Apility\DIBS\Easy\DIBSEasyClient;
+use NETS\Easy\Client;
 
 class Easy
 {
@@ -40,12 +40,12 @@ class Easy
   }
 
   /**
-   * @return DIBSEasyClient
+   * @return Client
    */
   public static function client()
   {
     if (!static::$apiClient) {
-      static::$apiClient = new DIBSEasyClient([
+      static::$apiClient = new Client([
         'mode' => static::$mode,
         'domain' => static::$domain,
         'secret_key' => static::$secretKey ?? null

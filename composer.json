@@ -1,10 +1,10 @@
 {
-  "name": "apility/dibs-easy",
-  "description": "DIBS Easy library",
+  "name": "apility/nets-easy",
+  "description": "NETS Easy library",
   "type": "library",
   "license": "MIT",
   "keywords": [
-    "DIBS",
+    "NETS",
     "Payment"
   ],
   "config": {
@@ -15,7 +15,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Apility\\DIBS\\": "src/"
+      "NETS\\": "src/"
     }
   },
   "require": {

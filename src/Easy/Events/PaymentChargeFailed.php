@@ -1,7 +1,7 @@
 <?php
 
-namespace Apility\DIBS\Easy\Events;
+namespace NETS\Easy\Events;
 
-class PaymentChargeFailed extends DIBSPaymentEvent
+class PaymentChargeFailed extends EasyEvent
 {
 }

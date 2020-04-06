@@ -1,6 +1,6 @@
 <?php
 
-namespace Apility\DIBS\Easy;
+namespace NETS\Easy;
 
 /**
  * @property-read string $paymentType
@@ -8,7 +8,7 @@ namespace Apility\DIBS\Easy;
  * @property-read string $invoiceDetails
  * @property-read CardDetails $cardDetails
  */
-class PaymentDetails extends DIBSEasyType
+class PaymentDetails extends EasyType
 {
   /** @var array */
   protected $timestamps = [];

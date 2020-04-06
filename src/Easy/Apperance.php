@@ -1,11 +1,11 @@
 <?php
 
-namespace Apility\DIBS\Easy;
+namespace NETS\Easy;
 
 /**
  * @property-read TextOptions $textOptions
  */
-class Apperance extends DIBSEasyType
+class Apperance extends EasyType
 {
   /** @var array */
   protected $timestamps = [];

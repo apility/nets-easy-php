@@ -1,15 +1,15 @@
 <?php
 
-namespace Apility\DIBS\Easy;
+namespace NETS\Easy;
 
 use Carbon\CarbonImmutable;
 
-use Apility\DIBS\Easy;
-use Apility\DIBS\Easy\Exceptions\ChargeException;
-use Apility\DIBS\Easy\Exceptions\DIBSEasyException;
-use Apility\DIBS\Easy\Exceptions\BadRequestException;
-use Apility\DIBS\Easy\Exceptions\NotFoundException;
-use Apility\DIBS\Easy\Exceptions\PaymentException;
+use NETS\Easy;
+use NETS\Easy\Exceptions\ChargeException;
+use NETS\Easy\Exceptions\EasyException;
+use NETS\Easy\Exceptions\BadRequestException;
+use NETS\Easy\Exceptions\NotFoundException;
+use NETS\Easy\Exceptions\PaymentException;
 
 /**
  * @property-read string $paymentId
@@ -21,7 +21,7 @@ use Apility\DIBS\Easy\Exceptions\PaymentException;
  * @property-read CarbonImmutable $created
  * @property-read Subscription $subscription
  */
-class Payment extends DIBSEasyType
+class Payment extends EasyType
 {
   /** @var array */
   protected $timestamps = [];
@@ -62,7 +62,7 @@ class Payment extends DIBSEasyType
    * Undocumented function
    *
    * @param array $options
-   * @throws DIBSEasyException
+   * @throws EasyException
    * @return string Charge ID
    */
   public function charge($options = [])
@@ -110,7 +110,7 @@ class Payment extends DIBSEasyType
     $options['checkoutKey'] = $options['checkoutKey'] ?? Easy::checkoutKey();
     $options['paymentId'] = $options['paymentId'] ?? $this->paymentId;
     $options['partnerMerchantNumber'] = $options['partnerMerchantNumber'] ?? Easy::merchantId();
-    $options['containerId'] = $options['containerId'] ?? 'dibs-complete-checkout';
+    $options['containerId'] = $options['containerId'] ?? 'easy-complete-checkout';
 
     $redirect = $options['redirect'] ?? '';
     $redirect = rtrim($redirect, '?');

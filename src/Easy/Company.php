@@ -1,11 +1,11 @@
 <?php
 
-namespace Apility\DIBS\Easy;
+namespace NETS\Easy;
 
 /**
  * @property-read ContactDetails $contactDetails
  */
-class Company extends DIBSEasyType
+class Company extends EasyType
 {
   /** @var array */
   protected $timestamps = [];

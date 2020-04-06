@@ -1,7 +1,7 @@
 <?php
 
-namespace Apility\DIBS\Easy\Exceptions;
+namespace NETS\Easy\Exceptions;
 
-class NotFoundException extends DIBSEasyException
+class NotFoundException extends EasyException
 {
 }

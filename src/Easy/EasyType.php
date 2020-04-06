@@ -1,12 +1,12 @@
 <?php
 
-namespace Apility\DIBS\Easy;
+namespace NETS\Easy;
 
 use JsonSerializable;
 
 use Netflex\Support\Accessors;
 
-abstract class DIBSEasyType implements JsonSerializable
+abstract class EasyType implements JsonSerializable
 {
   use Accessors;
 

@@ -1,11 +1,11 @@
 <?php
 
-namespace Apility\DIBS\Easy;
+namespace NETS\Easy;
 
 /**
  * @property-read string $completePaymentButtonText
  */
-class TextOptions extends DIBSEasyType
+class TextOptions extends EasyType
 {
   /** @var array */
   protected $timestamps = [];

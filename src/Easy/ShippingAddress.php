@@ -1,8 +1,8 @@
 <?php
 
-namespace Apility\DIBS\Easy;
+namespace NETS\Easy;
 
-class ShippingAddress extends DIBSEasyType
+class ShippingAddress extends EasyType
 {
   /** @var array */
   protected $timestamps = [];

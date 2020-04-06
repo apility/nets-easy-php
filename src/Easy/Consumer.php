@@ -1,6 +1,6 @@
 <?php
 
-namespace Apility\DIBS\Easy;
+namespace NETS\Easy;
 
 /**
  * @property-read string $addressLine1
@@ -13,7 +13,7 @@ namespace Apility\DIBS\Easy;
  * @property-read ShippingAddress $shippingAddress
  * @property-read PrivatePerson $privatePerson
  */
-class Consumer extends DIBSEasyType
+class Consumer extends EasyType
 {
   /** @var array */
   protected $timestamps = [];

@@ -1,11 +1,11 @@
 <?php
 
-namespace Apility\DIBS\Easy;
+namespace NETS\Easy;
 
 /**
  * @property-read string $countryCode
  */
-class ShippingCountry extends DIBSEasyType
+class ShippingCountry extends EasyType
 {
   /** @var array */
   protected $timestamps = [];

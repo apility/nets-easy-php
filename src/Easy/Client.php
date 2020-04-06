@@ -1,19 +1,19 @@
 <?php
 
-namespace Apility\DIBS\Easy;
+namespace NETS\Easy;
 
-use Apility\DIBS\Easy\Exceptions\BadRequestException;
-use Apility\DIBS\Easy\Exceptions\NotAuthorizedException;
-use Apility\DIBS\Easy\Exceptions\NotFoundException;
-use Apility\DIBS\Easy\Exceptions\PaymentException;
+use NETS\Easy\Exceptions\BadRequestException;
+use NETS\Easy\Exceptions\NotAuthorizedException;
+use NETS\Easy\Exceptions\NotFoundException;
+use NETS\Easy\Exceptions\PaymentException;
 use Netflex\API\Client as API;
 
-use GuzzleHttp\Client;
+use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\ClientException;
 
-class DIBSEasyClient extends API
+class Client extends API
 {
-  /** @var Client */
+  /** @var GuzzleClient */
   protected $client;
 
   /** @var string */

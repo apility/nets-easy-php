@@ -1,14 +1,14 @@
 <?php
 
-namespace Apility\DIBS\Easy;
+namespace NETS\Easy;
 
-use Apility\DIBS\Easy;
-use Apility\DIBS\Easy\Exceptions\PaymentException;
-use Apility\DIBS\Easy\Exceptions\NotFoundException;
-use Apility\DIBS\Easy\DIBSEasyType;
-use Apility\DIBS\Easy\Exceptions\BadRequestException;
-use Apility\DIBS\Easy\Exceptions\SubscriptionException;
-use Apility\DIBS\Easy\PaymentDetails;
+use NETS\Easy;
+use NETS\Easy\Exceptions\PaymentException;
+use NETS\Easy\Exceptions\NotFoundException;
+use NETS\Easy\EasyType;
+use NETS\Easy\Exceptions\BadRequestException;
+use NETS\Easy\Exceptions\SubscriptionException;
+use NETS\Easy\PaymentDetails;
 
 use Carbon\CarbonImmutable;
 
@@ -19,7 +19,7 @@ use Carbon\CarbonImmutable;
  * @property-read CarbonImmutable $endDate
  * @property-read PaymentDetails $paymentDetails
  */
-class Subscription extends DIBSEasyType
+class Subscription extends EasyType
 {
   /** @var array */
   protected $timestamps = [];
@@ -47,7 +47,7 @@ class Subscription extends DIBSEasyType
   /**
    * @param array $options
    * @return Payment
-   * @see \Apility\DIBS\Easy\Payment::create
+   * @see \NETS\Easy\Payment::create
    */
   public static function create($options = [])
   {

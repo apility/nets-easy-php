@@ -1,6 +1,6 @@
 <?php
 
-namespace Apility\DIBS\Easy;
+namespace NETS\Easy;
 
 class Country
 {
