@@ -1,4 +1,4 @@
-# NETS Easy PHP bindings
+# Nets Easy PHP bindings
 
 [![CircleCI](https://circleci.com/gh/apility/nets-easy-php.svg?style=shield&circle-token=d878cbbe3e98c96ba07f7baaec7cf7fd11bd2399)](https://circleci.com/gh/apility/nets-easy-php)
 [![License](https://img.shields.io/badge/license-MIT-brightgreen)](https://github.com/apility/nets-easy-php/blob/master/LICENSE)
@@ -37,8 +37,8 @@ Simple usage looks like:
 ```php
 <?php
 
-use NETS\Easy;
-use NETS\Easy\Payment;
+use Nets\Easy;
+use Nets\Easy\Payment;
 
 Easy::setCredentials([
   'secret_key' => '00000000000000000000000000000000',
@@ -79,8 +79,8 @@ The simplest way to integrate the checkout form in the frontend, is to use the `
 ```php
 <?php
 
-use NETS\Easy;
-use NETS\Easy\Payment;
+use Nets\Easy;
+use Nets\Easy\Payment;
 
 Easy::setCredentials(...);
 

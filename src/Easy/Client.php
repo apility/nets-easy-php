@@ -1,13 +1,13 @@
 <?php
 
-namespace NETS\Easy;
+namespace Nets\Easy;
 
 use Psr\Http\Message\ResponseInterface;
 
-use NETS\Easy\Exceptions\BadRequestException;
-use NETS\Easy\Exceptions\NotAuthorizedException;
-use NETS\Easy\Exceptions\NotFoundException;
-use NETS\Easy\Exceptions\PaymentException;
+use Nets\Easy\Exceptions\BadRequestException;
+use Nets\Easy\Exceptions\NotAuthorizedException;
+use Nets\Easy\Exceptions\NotFoundException;
+use Nets\Easy\Exceptions\PaymentException;
 
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\ClientException;

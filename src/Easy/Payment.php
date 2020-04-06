@@ -1,15 +1,15 @@
 <?php
 
-namespace NETS\Easy;
+namespace Nets\Easy;
 
 use Carbon\CarbonImmutable;
 
-use NETS\Easy;
-use NETS\Easy\Exceptions\ChargeException;
-use NETS\Easy\Exceptions\EasyException;
-use NETS\Easy\Exceptions\BadRequestException;
-use NETS\Easy\Exceptions\NotFoundException;
-use NETS\Easy\Exceptions\PaymentException;
+use Nets\Easy;
+use Nets\Easy\Exceptions\ChargeException;
+use Nets\Easy\Exceptions\EasyException;
+use Nets\Easy\Exceptions\BadRequestException;
+use Nets\Easy\Exceptions\NotFoundException;
+use Nets\Easy\Exceptions\PaymentException;
 
 /**
  * @property-read string $paymentId

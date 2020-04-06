@@ -2,7 +2,7 @@
 
 namespace NETS;
 
-use NETS\Easy\Client;
+use Nets\Easy\Client;
 
 class Easy
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace NETS\Easy\Events;
+namespace Nets\Easy\Events;
 
 class PaymentReservationCreated extends EasyEvent
 {

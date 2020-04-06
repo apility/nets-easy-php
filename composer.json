@@ -1,10 +1,10 @@
 {
   "name": "apility/nets-easy",
-  "description": "NETS Easy library",
+  "description": "Nets Easy library",
   "type": "library",
   "license": "MIT",
   "keywords": [
-    "NETS",
+    "Nets",
     "Payment"
   ],
   "config": {
@@ -15,7 +15,7 @@
   },
   "autoload": {
     "psr-4": {
-      "NETS\\": "src/"
+      "Nets\\": "src/"
     }
   },
   "require": {

@@ -1,14 +1,14 @@
 <?php
 
-namespace NETS\Easy;
+namespace Nets\Easy;
 
-use NETS\Easy;
-use NETS\Easy\Exceptions\PaymentException;
-use NETS\Easy\Exceptions\NotFoundException;
-use NETS\Easy\EasyType;
-use NETS\Easy\Exceptions\BadRequestException;
-use NETS\Easy\Exceptions\SubscriptionException;
-use NETS\Easy\PaymentDetails;
+use Nets\Easy;
+use Nets\Easy\Exceptions\PaymentException;
+use Nets\Easy\Exceptions\NotFoundException;
+use Nets\Easy\EasyType;
+use Nets\Easy\Exceptions\BadRequestException;
+use Nets\Easy\Exceptions\SubscriptionException;
+use Nets\Easy\PaymentDetails;
 
 use Carbon\CarbonImmutable;
 
@@ -47,7 +47,7 @@ class Subscription extends EasyType
   /**
    * @param array $options
    * @return Payment
-   * @see \NETS\Easy\Payment::create
+   * @see \Nets\Easy\Payment::create
    */
   public static function create($options = [])
   {

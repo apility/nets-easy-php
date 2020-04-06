@@ -1,6 +1,6 @@
 <?php
 
-namespace NETS\Easy\Exceptions;
+namespace Nets\Easy\Exceptions;
 
 class ChargeException extends EasyException
 {

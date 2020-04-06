@@ -1,6 +1,6 @@
 <?php
 
-namespace NETS\Easy;
+namespace Nets\Easy;
 
 /**
  * @property-read ContactDetails $contactDetails

@@ -1,8 +1,8 @@
 <?php
 
-namespace NETS\Easy\Events;
+namespace Nets\Easy\Events;
 
-use NETS\Easy\Payment;
+use Nets\Easy\Payment;
 use Netflex\Commerce\Order;
 use Illuminate\Queue\SerializesModels;
 
