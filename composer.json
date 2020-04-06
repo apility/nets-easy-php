@@ -20,8 +20,7 @@
   },
   "require": {
     "php": "^7.3",
-    "illuminate/support": "^7.0",
-    "netflex/support": "^2.0"
+    "illuminate/support": ">=5.5"
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
