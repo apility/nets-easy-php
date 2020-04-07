@@ -90,8 +90,7 @@ class Payment extends EasyType
     try {
       return static::retrieve(
         Easy::client()
-          ->post('payments', (object) $options)
-          ->paymentId
+          ->post('payments', (object) $options)['paymentId']
       );
     } catch (BadRequestException $e) {
       throw new PaymentException($e->getMessage(), $e->getCode());
