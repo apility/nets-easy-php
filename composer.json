@@ -20,11 +20,12 @@
   },
   "require": {
     "php": "^7.3",
-    "illuminate/support": ">=5.5"
+    "illuminate/support": ">=5.5 <8.0",
+    "nesbot/carbon": ">=1.26 <3.0"
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
   "require-dev": {
-    "vlucas/phpdotenv": "^4.1"
+    "vlucas/phpdotenv": ">=4.1 <5"
   }
 }

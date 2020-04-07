@@ -10,13 +10,13 @@ use Nets\Easy\Exceptions\BadRequestException;
 use Nets\Easy\Exceptions\SubscriptionException;
 use Nets\Easy\PaymentDetails;
 
-use Carbon\CarbonImmutable;
+use Carbon\Carbon;
 
 /**
  * @property-read string $subscriptionId
  * @property-read int $frequency
  * @property-read int $interval
- * @property-read CarbonImmutable $endDate
+ * @property-read Carbon $endDate
  * @property-read PaymentDetails $paymentDetails
  */
 class Subscription extends EasyType
@@ -26,7 +26,7 @@ class Subscription extends EasyType
 
   public function getEndDateAttribute($endDate)
   {
-    return CarbonImmutable::parse($endDate);
+    return Carbon::parse($endDate);
   }
 
   public function getPaymentDetailsAttribute($paymentDetails)

@@ -2,7 +2,7 @@
 
 namespace Nets\Easy;
 
-use Carbon\CarbonImmutable;
+use Carbon\Carbon;
 
 use Nets\Easy;
 use Nets\Easy\Exceptions\ChargeException;
@@ -18,7 +18,7 @@ use Nets\Easy\Exceptions\PaymentException;
  * @property-read PaymentDetails $paymentDetails
  * @property-read OrderDetails $orderDetails
  * @property-read Checkout $checkout
- * @property-read CarbonImmutable $created
+ * @property-read Carbon $created
  * @property-read Subscription $subscription
  */
 class Payment extends EasyType
@@ -48,7 +48,7 @@ class Payment extends EasyType
 
   public function getCreatedAttribute($created)
   {
-    return CarbonImmutable::parse($created);
+    return Carbon::parse($created);
   }
 
   public function getSubscriptionAttribute($subscription)
