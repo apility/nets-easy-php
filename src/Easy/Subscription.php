@@ -6,7 +6,6 @@ use Nets\Easy;
 use Nets\Easy\Exceptions\PaymentException;
 use Nets\Easy\Exceptions\NotFoundException;
 use Nets\Easy\EasyType;
-use Nets\Easy\Exceptions\BadRequestException;
 use Nets\Easy\Exceptions\SubscriptionException;
 use Nets\Easy\PaymentDetails;
 
@@ -62,5 +61,20 @@ class Subscription extends EasyType
     } catch (PaymentException $e) {
       throw new SubscriptionException($e->getMessage(), $e->getCode());
     }
+  }
+
+  /**
+   * Charges the subscription
+   *
+   * @param array $options
+   * @return Payment
+   * @throws PaymentException If the card is rejected
+   */
+  public function charge($options = [])
+  {
+    $response = Easy::client()
+      ->post('subscriptions/' . $this->subscriptionId . '/charges', $options);
+
+    return Payment::retrieve($response->paymentId);
   }
 }
