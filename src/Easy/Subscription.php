@@ -75,6 +75,6 @@ class Subscription extends EasyType
     $response = Easy::client()
       ->post('subscriptions/' . $this->subscriptionId . '/charges', $options);
 
-    return Payment::retrieve($response->paymentId);
+    return Payment::retrieve($response['paymentId']);
   }
 }
