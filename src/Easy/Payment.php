@@ -59,8 +59,6 @@ class Payment extends EasyType
   }
 
   /**
-   * Undocumented function
-   *
    * @param array $options
    * @throws EasyException
    * @return string Charge ID
@@ -73,6 +71,34 @@ class Payment extends EasyType
     } catch (BadRequestException $e) {
       throw new ChargeException($e->getMessage(), $e->getCode());
     }
+  }
+
+  /**
+   * @param array $options
+   * @return bool
+   */
+  public function cancel($options = [])
+  {
+    try {
+      Easy::client()
+        ->post('payments/' . $this->paymentId . '/cancels', (object) $options);
+    } catch (BadRequestException $e) {
+      return false;
+    }
+
+    return true;
+  }
+
+  /**
+   * @param string $chargeId
+   * @param array $options
+   * @return string Refund ID
+   * @throws BadRequestException
+   */
+  public function refund($chargeId, $options = [])
+  {
+    return Easy::client()
+      ->post('charges/' . $chargeId . '/refunds', (object) $options);
   }
 
   public static function retrieve($id)
