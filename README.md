@@ -40,7 +40,7 @@ Simple usage looks like:
 use Nets\Easy;
 use Nets\Easy\Payment;
 
-Easy::setCredentials([
+Easy::setup([
   'secret_key' => '00000000000000000000000000000000',
   'checkout_key' => '00000000000000000000000000000000',
   'merchant_id' => '000000000'
