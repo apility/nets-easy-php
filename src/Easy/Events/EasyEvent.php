@@ -4,9 +4,10 @@ namespace Nets\Easy\Events;
 
 use Nets\Easy\Payment;
 use Netflex\Commerce\Order;
+
 use Illuminate\Queue\SerializesModels;
 
-class EasyEvent;
+class EasyEvent
 {
   use SerializesModels;
 
