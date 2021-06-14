@@ -8,9 +8,10 @@ use Nets\Easy\Exceptions\BadRequestException;
 use Nets\Easy\Exceptions\NotAuthorizedException;
 use Nets\Easy\Exceptions\NotFoundException;
 use Nets\Easy\Exceptions\PaymentException;
+use Nets\Easy\Exceptions\ServerException;
 
 use GuzzleHttp\Client as GuzzleClient;
-use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\BadResponseException;
 
 class Client
 {
@@ -52,7 +53,7 @@ class Client
   {
     try {
       return $this->parseResponse($this->client->get($url));
-    } catch (ClientException $e) {
+    } catch (BadResponseException $e) {
       throw static::makeException($e);
     }
   }
@@ -67,7 +68,7 @@ class Client
   {
     try {
       return $this->parseResponse($this->client->put($url, ['json' => $payload]));
-    } catch (ClientException $e) {
+    } catch (BadResponseException $e) {
       throw static::makeException($e);
     }
   }
@@ -82,7 +83,7 @@ class Client
   {
     try {
       return $this->parseResponse($this->client->post($url, ['json' => $payload]));
-    } catch (ClientException $e) {
+    } catch (BadResponseException $e) {
       throw static::makeException($e);
     }
   }
@@ -96,16 +97,16 @@ class Client
   {
     try {
       return $this->parseResponse($this->client->delete($url));
-    } catch (ClientException $e) {
+    } catch (BadResponseException $e) {
       throw static::makeException($e);
     }
   }
 
   /**
-   * @param ClientException $e
-   * @return PaymentException|ClientException
+   * @param BadResponseException $e
+   * @return PaymentException|BadResponseException
    */
-  private static function makeException(ClientException $e)
+  private static function makeException(BadResponseException $e)
   {
     $response = ($e->getResponse());
 
@@ -117,6 +118,9 @@ class Client
         return new NotAuthorizedException('Invalid or missing credentials', 401);
       case 404:
         return new NotFoundException('Not found', 404);
+      case 500:
+        $parsedResponse = trim(strip_tags((string) $response->getBody()));
+        return new ServerException('Server Exception' . ($parsedResponse ? (': ' . $parsedResponse) : null), 500);
       default:
         $body = json_decode($response->getBody());
 
