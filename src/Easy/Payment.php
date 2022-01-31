@@ -156,11 +156,15 @@ class Payment extends EasyType
             container.id = options.containerId
             document.body.appendChild(container)
           }
+          var processing = false;
           var script = document.createElement('script');
           script.addEventListener('load', function () {
             var checkout = new Dibs.Checkout(options);
             checkout.on('payment-completed', function(response) {
-              window.location = '$redirect?paymentId=' + response.paymentId;
+              if (!processing) {
+                processing = true;
+                window.location = '$redirect?paymentId=' + response.paymentId;
+              }
             });
           });
           script.src = '$src';
