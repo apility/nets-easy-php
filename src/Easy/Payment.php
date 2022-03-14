@@ -136,7 +136,9 @@ class Payment extends EasyType
     $options['paymentId'] = $options['paymentId'] ?? $this->paymentId;
     $options['partnerMerchantNumber'] = $options['partnerMerchantNumber'] ?? Easy::merchantId();
     $options['containerId'] = $options['containerId'] ?? 'easy-complete-checkout';
+    $options['shouldRedirect'] = $options['shouldRedirect'] ?? true;
 
+    $shouldRedirect = $options['shouldRedirect'] ? 'true' : 'false';
     $redirect = $options['redirect'] ?? '';
     $redirect = rtrim($redirect, '?');
 
@@ -150,6 +152,7 @@ class Payment extends EasyType
     return <<<JS
       <script>
         (function () {
+          var shouldRedirect = $shouldRedirect;
           var options = $checkoutOptions;
           if (!document.getElementById(options.containerId)) {
             var container = document.createElement('div')
@@ -163,7 +166,15 @@ class Payment extends EasyType
             checkout.on('payment-completed', function(response) {
               if (!processing) {
                 processing = true;
-                window.location = '$redirect?paymentId=' + response.paymentId;
+                if (typeof parent !== 'undefined') {
+                  parent.postMessage({
+                    type: 'payment-completed',
+                    paymentId: response.paymentId,
+                  }, '*');  
+                }
+                if (shouldRedirect) {
+                  window.location = '$redirect?paymentId=' + response.paymentId;
+                }
               }
             });
           });
