@@ -173,7 +173,13 @@ class Payment extends EasyType
                   }, '*');  
                 }
                 if (shouldRedirect) {
-                  window.location = '$redirect?paymentId=' + response.paymentId;
+                  var redirectLocation = '$redirect';
+                  if (redirectLocation.includes('?')) {
+                    redirectLocation += '&paymentId=' + response.paymentId;
+                  } else {
+                    redirectLocation += '?paymentId=' + response.paymentId;
+                  }
+                  window.location = redirectLocation;
                 }
               }
             });
