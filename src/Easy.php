@@ -1,6 +1,6 @@
 <?php
 
-namespace NETS;
+namespace Nets;
 
 use Nets\Easy\Client;
 
