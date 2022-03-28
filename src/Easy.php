@@ -23,6 +23,8 @@ class Easy
   /** @var string */
   protected static $domain;
 
+  protected static $commercePlatformTag = null;
+
   const MODE_LIVE = 'live';
   const MODE_TEST = 'test';
 
@@ -39,6 +41,11 @@ class Easy
     static::$domain = $options['domain'] ?? null;
   }
 
+  public static function setCommercePlatformTag($tag)
+  {
+    static::$commercePlatformTag = $tag;
+  }
+
   /**
    * @return Client
    */
@@ -50,6 +57,10 @@ class Easy
         'domain' => static::$domain,
         'secret_key' => static::$secretKey ?? null
       ]);
+    }
+
+    if (static::$commercePlatformTag) {
+      static::$apiClient->addHeader('commercePlatformTag', static::$commercePlatformTag);
     }
 
     return static::$apiClient;

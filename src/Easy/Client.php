@@ -13,6 +13,10 @@ use Nets\Easy\Exceptions\ServerException;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\BadResponseException;
 
+use GuzzleHttp\HandlerStack;
+use GuzzleHttp\Middleware;
+use Psr\Http\Message\RequestInterface;
+
 class Client
 {
   /** @var GuzzleClient */
@@ -23,6 +27,8 @@ class Client
 
   /** @var string */
   protected $secretKey;
+
+  protected $headers = [];
 
   /**
    * @param array $options
@@ -41,7 +47,24 @@ class Client
       ]
     ];
 
+    $handler = HandlerStack::create();
+    $handler->push(Middleware::mapRequest(function (RequestInterface $request) {
+      foreach ($this->headers as $key => $value) {
+        $request = $request->withHeader($key, $value);
+      }
+      return $request;
+    }));
+
+    $options['handler'] = $handler;
+
     $this->client = new GuzzleClient($options);
+  }
+
+  public function addHeader($name, $value)
+  {
+    if (!isset($this->headers[$name])) {
+      $this->headers[$name] = $value;
+    }
   }
 
   /**
