@@ -190,4 +190,46 @@ class Payment extends EasyType
       </script>
 JS;
   }
+
+  /**
+   * Creates a 'dummy' null payment
+   *
+   * @return static
+   */
+  public static function free()
+  {
+    return new static([
+      'paymentId' => null,
+      'summary' => [
+        'reservedAmount' => 0,
+        'chargedAmount' => 0,
+      ],
+      'consumer' => null,
+      'paymentDetails' => [
+        "paymentType" => null,
+        'paymentMethod' => null,
+        'invoiceDetails' => null,
+        'cardDetails' => [
+          'maskedPan' => null,
+          'expiryDate' => null
+        ]
+      ],
+      'orderDetails' => [
+        'amount' => 0,
+        'currency' => 'NOK',
+        'reference' => null
+      ],
+      'checkout' => null,
+      'created' => Carbon::now()->toIso8601ZuluString(),
+      'charges' => [
+        [
+          'chargeId' => null,
+          'amount' => 0,
+          'created' => Carbon::now()->toIso8601ZuluString(),
+          'orderItems' => []
+        ]
+      ],
+      'subscription' => null
+    ]);
+  }
 }
