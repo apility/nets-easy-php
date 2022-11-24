@@ -3,7 +3,7 @@
 namespace Nets\Easy;
 
 use Carbon\Carbon;
-
+use Exception;
 use Nets\Easy;
 use Nets\Easy\Exceptions\ChargeException;
 use Nets\Easy\Exceptions\EasyException;
@@ -55,6 +55,18 @@ class Payment extends EasyType
   {
     if ($subscription && isset($subscription['id'])) {
       return Subscription::retrieve($subscription['id']);
+    }
+  }
+
+  public function terminate(): bool
+  {
+    try {
+      Easy::client()
+        ->put('payments/' . $this->paymentId . '/terminate');
+
+      return true;
+    } catch (Exception $e) {
+      return false;
     }
   }
 
