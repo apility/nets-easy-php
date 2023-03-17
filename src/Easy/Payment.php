@@ -14,7 +14,7 @@ use Nets\Easy\Exceptions\PaymentException;
 /**
  * @property-read string $paymentId
  * @property-read mixed $summary
- * @property-read Consumber $consumer
+ * @property-read Consumer $consumer
  * @property-read PaymentDetails $paymentDetails
  * @property-read OrderDetails $orderDetails
  * @property-read Checkout $checkout
